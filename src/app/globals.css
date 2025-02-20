@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-skin-primary: var(--color-skin-primary);
+  --color-skin-muted: var(--color-skin-muted);
+  --color-skin-link: var(--color-skin-link);
+  --color-skin-separator: var(--color-skin-separator);
+  --color-skin-elevated-separator: var(--color-skin-elevated-separator);
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --color-skin-primary: rgb(0, 149, 246);
+    --color-skin-muted: rgb(168, 168, 168);
+    --color-skin-link: rgb(224, 241, 255);
+    --color-skin-separator: rgb(38, 38, 38);
+    --color-skin-elevated-separator: rgb(54, 54, 54);
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-geist-sans);
+}
