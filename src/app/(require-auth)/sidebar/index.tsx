@@ -64,7 +64,7 @@ export default function Sidebar() {
       ref={clickOutsideRef}
       className={cn(
         "sticky top-0 h-screen",
-        pathname === page.inbox ? "w-fit" : "w-72",
+        pathname === page.inbox ? "w-fit" : "w-fit lg:w-72",
       )}
     >
       <aside ref={refs.setReference} className={cn("min-h-screen w-fit")}>

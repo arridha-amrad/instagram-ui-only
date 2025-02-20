@@ -18,15 +18,18 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
   }
-}
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
   :root {
+    --background: #ffffff;
+    --foreground: #171717;
+    --color-skin-primary: rgb(0, 149, 246);
+    --color-skin-muted: rgb(168, 168, 168);
+    --color-skin-link: rgb(224, 241, 255);
+    --color-skin-separator: rgb(38, 38, 38);
+    --color-skin-elevated-separator: rgb(255, 255, 255);
+  }
+
+  .dark {
     --background: #0a0a0a;
     --foreground: #ededed;
     --color-skin-primary: rgb(0, 149, 246);

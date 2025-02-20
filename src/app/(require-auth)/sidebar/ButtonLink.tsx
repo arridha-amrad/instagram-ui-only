@@ -1,12 +1,11 @@
 "use client";
 
+import { page } from "@/app/pageLinks";
 import { cn } from "@/app/utils";
 import { Button } from "@headlessui/react";
-import mergeRefs from "merge-refs";
 import { usePathname } from "next/navigation";
-import { HTMLAttributes, ReactNode, Ref, useRef } from "react";
+import { HTMLAttributes, ReactNode, Ref } from "react";
 import { useSidebarContext } from "./Context";
-import { page } from "@/app/pageLinks";
 
 type Props = {
   callback?: VoidFunction;
@@ -14,7 +13,7 @@ type Props = {
   activeIcon: ReactNode;
   icon: ReactNode;
   label: string;
-  ref?: Ref<HTMLButtonElement>;
+  ref?: Ref<HTMLDivElement>;
 } & HTMLAttributes<HTMLElement>;
 
 export default function ButtonLink({
@@ -30,17 +29,8 @@ export default function ButtonLink({
     useSidebarContext();
   const pathname = usePathname();
   const isActive = pathname === activePath;
-  const btnRef = useRef<HTMLButtonElement | null>(null);
 
   const isApplySmallSidebar = isSmallSidebar || pathname === page.inbox;
-
-  const onClick = () => {
-    if (callback) {
-      callback();
-    } else {
-      btnRef.current?.click();
-    }
-  };
 
   const currentIcon = () => {
     if (label === "Search") {
@@ -54,15 +44,15 @@ export default function ButtonLink({
 
   return (
     <div
-      onClick={onClick}
+      onClick={callback}
       className={cn(
-        "flex w-fit cursor-pointer items-center rounded-lg hover:bg-neutral-500/20",
+        "flex w-max cursor-pointer items-center rounded-lg hover:bg-neutral-500/20",
       )}
+      {...props}
       tabIndex={0}
+      ref={ref}
     >
       <Button
-        {...props}
-        ref={mergeRefs(btnRef, ref)}
         className={cn(
           "ring-skin-muted flex aspect-square h-12 w-fit cursor-pointer items-center justify-center rounded-lg",
         )}
@@ -72,7 +62,7 @@ export default function ButtonLink({
       {!isApplySmallSidebar && (
         <span
           className={cn(
-            "hidden pr-4 pl-2 lg:block",
+            "hidden pr-4 pl-2 select-none lg:block",
             isActive ? "font-bold" : "font-normal",
           )}
         >
