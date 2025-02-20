@@ -6,6 +6,7 @@ import mergeRefs from "merge-refs";
 import { usePathname } from "next/navigation";
 import { HTMLAttributes, ReactNode, Ref, useRef } from "react";
 import { useSidebarContext } from "./Context";
+import { page } from "@/app/pageLinks";
 
 type Props = {
   callback?: VoidFunction;
@@ -31,6 +32,8 @@ export default function ButtonLink({
   const isActive = pathname === activePath;
   const btnRef = useRef<HTMLButtonElement | null>(null);
 
+  const isApplySmallSidebar = isSmallSidebar || pathname === page.inbox;
+
   const onClick = () => {
     if (callback) {
       callback();
@@ -54,7 +57,6 @@ export default function ButtonLink({
       onClick={onClick}
       className={cn(
         "flex w-fit cursor-pointer items-center rounded-lg hover:bg-neutral-500/20",
-        !isSmallSidebar && "lg:pr-4",
       )}
       tabIndex={0}
     >
@@ -67,10 +69,10 @@ export default function ButtonLink({
       >
         {currentIcon()}
       </Button>
-      {!isSmallSidebar && (
+      {!isApplySmallSidebar && (
         <span
           className={cn(
-            "hidden pl-2 lg:block",
+            "hidden pr-4 pl-2 lg:block",
             isActive ? "font-bold" : "font-normal",
           )}
         >

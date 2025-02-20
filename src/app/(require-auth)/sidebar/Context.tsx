@@ -1,5 +1,6 @@
 "use client";
 
+import { page } from "@/app/pageLinks";
 import { usePathname } from "next/navigation";
 import {
   createContext,
@@ -18,6 +19,7 @@ type TContext = {
   setNotificationsOpen: Dispatch<SetStateAction<boolean>>;
   isSearchOpen: boolean;
   setSearchOpen: Dispatch<SetStateAction<boolean>>;
+  closeSecondarySidebar: () => void;
 };
 
 const Context = createContext<TContext>({
@@ -27,6 +29,7 @@ const Context = createContext<TContext>({
   setNotificationsOpen: () => {},
   isSearchOpen: false,
   setSearchOpen: () => {},
+  closeSecondarySidebar: () => {},
 });
 
 export const SidebarProvider = ({ children }: { children: ReactNode }) => {
@@ -36,40 +39,30 @@ export const SidebarProvider = ({ children }: { children: ReactNode }) => {
 
   const pathname = usePathname();
 
+  const closeSecondarySidebar = () => {
+    setSearchOpen(false);
+    setNotificationsOpen(false);
+    if (pathname !== page.inbox) {
+      setSmallSidebar(false);
+    }
+  };
+
   useEffect(() => {
-    setSmallSidebar(false);
+    setNotificationsOpen(false);
+    setSearchOpen(false);
   }, [pathname]);
 
   useEffect(() => {
-    if (!isSmallSidebar) {
-      setSearchOpen(false);
-      setNotificationsOpen(false);
+    if (isSearchOpen || isNotificationsOpen) {
+      setSmallSidebar(true);
     }
-  }, [isSmallSidebar]);
+  }, [isSearchOpen, isNotificationsOpen]);
 
   useEffect(() => {
-    if (isSearchOpen) {
-      setSmallSidebar(true);
-      setNotificationsOpen(false);
-    } else {
-      if (!isNotificationsOpen) {
-        setSmallSidebar(false);
-      }
+    if (!isSearchOpen && !isNotificationsOpen && pathname !== page.inbox) {
+      setSmallSidebar(false);
     }
-    // eslint-disable-next-line
-  }, [isSearchOpen]);
-
-  useEffect(() => {
-    if (isNotificationsOpen) {
-      setSmallSidebar(true);
-      setSearchOpen(false);
-    } else {
-      if (!isSearchOpen) {
-        setSmallSidebar(false);
-      }
-    }
-    // eslint-disable-next-line
-  }, [isNotificationsOpen]);
+  }, [isSearchOpen, isNotificationsOpen, pathname]);
 
   return (
     <Context
@@ -80,6 +73,7 @@ export const SidebarProvider = ({ children }: { children: ReactNode }) => {
         setNotificationsOpen,
         isSearchOpen,
         setSearchOpen,
+        closeSecondarySidebar,
       }}
     >
       {children}

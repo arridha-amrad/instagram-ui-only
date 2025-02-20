@@ -9,11 +9,9 @@ type Props = {
 export default function Layout({ children }: Props) {
   return (
     <div className="container mx-auto flex min-h-screen">
-      <div className="sticky top-0 h-screen basis-auto lg:basis-[300px]">
-        <SidebarProvider>
-          <Sidebar />
-        </SidebarProvider>
-      </div>
+      <SidebarProvider>
+        <Sidebar />
+      </SidebarProvider>
       {children}
     </div>
   );

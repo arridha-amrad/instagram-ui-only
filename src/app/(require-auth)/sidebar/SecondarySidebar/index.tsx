@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useSidebarContext } from "../Context";
 import { CloseIcon } from "../Icons";
 import UserCard from "../UserCard";
+import { useEffect } from "react";
 
 type Props = {
   setFloating: (node: HTMLElement | null) => void;
@@ -16,12 +17,25 @@ export default function SecondarySidebar({
   setFloating,
   floatingStyles,
 }: Props) {
-  const { isSmallSidebar, isSearchOpen, isNotificationsOpen } =
+  const { isSearchOpen, isNotificationsOpen, closeSecondarySidebar } =
     useSidebarContext();
+
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        closeSecondarySidebar();
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [closeSecondarySidebar]);
 
   return (
     <AnimatePresence key="secondary-sidebar">
-      {isSmallSidebar && (
+      {(isSearchOpen || isNotificationsOpen) && (
         <FloatingPortal>
           <div ref={setFloating} style={floatingStyles}>
             <motion.div
@@ -33,7 +47,10 @@ export default function SecondarySidebar({
               }}
               exit={{ opacity: 0, x: -50 }}
             >
-              <div className="bg-background border-skin-elevated-separator relative h-screen w-[400px] overflow-y-auto border-r px-8">
+              <div
+                onClick={(e) => e.stopPropagation()}
+                className="border-skin-elevated-separator bg-background relative h-screen w-[400px] overflow-y-auto border-r px-8"
+              >
                 <div className="flex h-25 items-center">
                   <h1 className="text-2xl font-bold">
                     {isNotificationsOpen ? "Notifications" : "Search"}

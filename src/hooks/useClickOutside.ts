@@ -5,7 +5,16 @@ function useClickOutside<T extends HTMLDivElement>(callback: () => void) {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent | TouchEvent) {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
+      const floatingUIPortalNode = document.querySelector(
+        "[data-floating-ui-portal]",
+      );
+
+      if (
+        ref.current &&
+        !ref.current.contains(event.target as Node) &&
+        (!floatingUIPortalNode ||
+          !floatingUIPortalNode.contains(event.target as Node))
+      ) {
         callback();
       }
     }
