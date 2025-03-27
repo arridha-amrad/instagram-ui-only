@@ -19,8 +19,8 @@ export default function FormSignup() {
     });
   };
   return (
-    <>
-      <div className="space-y-2 w-full">
+    <form>
+      <div className="w-full space-y-2">
         <InputWithFloatingLabel
           label="Email"
           name="email"
@@ -51,7 +51,7 @@ export default function FormSignup() {
         />
       </div>
       <div className="mt-4 mb-2">
-        <p className="text-xs text-center text-skin-muted">
+        <p className="text-skin-muted text-center text-xs">
           People who use our service may have uploaded your contact information
           to Instagram.&nbsp;
           <Link href="/" className="text-skin-link py-1 font-semibold">
@@ -60,7 +60,7 @@ export default function FormSignup() {
         </p>
       </div>
       <div className="mb-2">
-        <p className="text-xs text-center text-skin-muted">
+        <p className="text-skin-muted text-center text-xs">
           By signing up, you agree to our{" "}
           <Link href="/" className="text-skin-link font-semibold">
             Terms
@@ -77,10 +77,10 @@ export default function FormSignup() {
         </p>
       </div>
       <div className="my-2 w-full">
-        <Button className="font-bold bg-blue-500 rounded-lg w-full py-2 text-sm">
+        <Button className="w-full rounded-lg bg-blue-500 py-2 text-sm font-bold">
           Sign Up
         </Button>
       </div>
-    </>
+    </form>
   );
 }

@@ -44,12 +44,12 @@ function Header() {
       <Dialog
         open={open}
         onClose={() => setOpen(false)}
-        className="fixed inset-0 flex w-screen items-center justify-center bg-black/30 p-4 transition duration-300 ease-out data-[closed]:opacity-0"
+        className="fixed inset-0 flex w-screen items-center justify-center p-4 transition duration-300 ease-out data-[closed]:opacity-0"
         transition
       >
         <DialogBackdrop className="bg-background/70 fixed inset-0" />
         <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-          <DialogPanel className="bg-background relative flex w-full max-w-sm flex-col rounded-xl">
+          <DialogPanel className="bg-bg-secondary relative flex w-full max-w-sm flex-col rounded-xl">
             <button className="h-12 w-max self-center text-sm font-medium text-red-400">
               Report
             </button>

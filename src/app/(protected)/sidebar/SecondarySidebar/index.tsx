@@ -1,12 +1,11 @@
 "use client";
 
 import { FloatingPortal } from "@floating-ui/react";
-import { Button, Input } from "@headlessui/react";
 import { AnimatePresence, motion } from "motion/react";
-import { useSidebarContext } from "../Context";
-import { CloseIcon } from "../Icons";
-import UserCard from "../UserCard";
 import { useEffect } from "react";
+import { useSidebarContext } from "../Context";
+import SearchInput from "./SearchInput";
+import SearchResult from "./SearchResult";
 
 type Props = {
   setFloating: (node: HTMLElement | null) => void;
@@ -26,7 +25,6 @@ export default function SecondarySidebar({
         closeSecondarySidebar();
       }
     }
-
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
@@ -58,27 +56,9 @@ export default function SecondarySidebar({
                 </div>
                 {isSearchOpen && (
                   <div className="relative">
-                    <div className="relative">
-                      <Input
-                        placeholder="Search"
-                        className="bg-skin-elevated-separator h-12 w-full rounded-lg pr-10 pl-4 outline-hidden"
-                      />
-                      <Button className="bg-skin-muted/20 text-foreground absolute top-1/2 right-3 flex aspect-square size-5 -translate-y-1/2 items-center justify-center rounded-full text-xs">
-                        <CloseIcon className="size-3" />
-                      </Button>
-                    </div>
-                    <div className="my-5 flex justify-between">
-                      <h1 className="text-skin-muted text-sm font-bold">
-                        Recent
-                      </h1>
-                      <Button className="text-skin-primary text-sm font-bold">
-                        Clear all
-                      </Button>
-                    </div>
-                    <div className="w-full space-y-4">
-                      <UserCard />
-                      <UserCard />
-                    </div>
+                    <SearchInput />
+                    <div className="mt-4" />
+                    <SearchResult />
                   </div>
                 )}
                 {isNotificationsOpen && (

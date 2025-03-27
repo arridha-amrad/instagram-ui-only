@@ -23,17 +23,17 @@ const links = [
 
 export default function Layout({ children }: Props) {
   return (
-    <div className="container mx-auto min-h-screen flex items-center justify-center flex-col py-4">
+    <div className="container mx-auto flex min-h-screen flex-col items-center justify-center py-4">
       {children}
-      <footer className="w-full mt-2">
-        <div className="w-full flex justify-center gap-4 items-center flex-wrap">
+      <footer className="mt-2 w-full">
+        <div className="flex w-full flex-wrap items-center justify-center gap-4">
           {links.map((link, i) => (
-            <a key={i} className="block text-xs text-skin-muted" href="/auth">
+            <a key={i} className="text-skin-muted block text-xs" href="/auth">
               {link}
             </a>
           ))}
         </div>
-        <p className="text-center text-skin-muted text-xs pt-4">
+        <p className="text-skin-muted pt-4 text-center text-xs">
           &copy; {new Date().getFullYear()} Instagram from Meta
         </p>
       </footer>

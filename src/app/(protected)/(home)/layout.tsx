@@ -8,7 +8,7 @@ type Props = {
 export default function Layout({ children, stories }: Props) {
   return (
     <>
-      <div className="mx-auto w-full max-w-[630px] flex-1 space-y-6 px-4">
+      <div className="mx-auto w-full flex-1 space-y-4 sm:px-4 md:max-w-[630px]">
         {stories}
         {children}
       </div>

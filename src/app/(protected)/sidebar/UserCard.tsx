@@ -18,7 +18,7 @@ export default function UserCard() {
         <h1 className="text-sm font-bold">amrad2108</h1>
         <h2 className="text-skin-muted text-sm">Arridha Amrad</h2>
       </div>
-      <Button className="self-center pr-3">
+      <Button className="self-center">
         <CloseIcon className="text-skin-muted size-5" />
       </Button>
     </div>

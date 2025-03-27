@@ -18,7 +18,10 @@ export default function Page() {
           </div>
           <FormLogin />
           <div className="my-6">
-            <Link className="text-skin-link text-sm font-semibold" href="/">
+            <Link
+              className="text-skin-link text-sm font-semibold"
+              href={page.forgotPassword}
+            >
               Forgot password
             </Link>
           </div>

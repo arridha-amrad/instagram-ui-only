@@ -29,7 +29,7 @@ export default function Page() {
       </main>
       <div className="border-skin-elevated-separator flex w-full items-center justify-center border py-6">
         <p className="text-sm">
-          Have an account?{" "}
+          Have an account&nbsp;
           <Link className="text-skin-primary font-semibold" href={page.login}>
             Login
           </Link>

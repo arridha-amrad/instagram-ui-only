@@ -63,7 +63,7 @@ export default function Sidebar() {
     <div
       ref={clickOutsideRef}
       className={cn(
-        "sticky top-0 h-screen",
+        "sticky top-0 hidden h-screen md:block",
         pathname === page.inbox ? "w-fit" : "w-fit lg:w-72",
       )}
     >

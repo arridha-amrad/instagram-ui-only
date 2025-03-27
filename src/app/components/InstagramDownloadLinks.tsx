@@ -11,6 +11,7 @@ export default function InstagramDownloadLinks() {
             alt="app store"
             width={120}
             height={100}
+            className="h-auto w-auto"
           />
         </a>
         <a href="www.google.com">
@@ -19,6 +20,7 @@ export default function InstagramDownloadLinks() {
             alt="app store"
             width={120}
             height={100}
+            className="h-auto w-auto"
           />
         </a>
       </div>

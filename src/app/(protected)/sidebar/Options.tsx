@@ -144,7 +144,7 @@ export function SwitchTheme() {
     >
       <span
         aria-hidden="true"
-        className="bg-foreground/30 group-data-[checked]:bg-foreground pointer-events-none inline-block size-5 translate-x-0 rounded-full ring-0 shadow-lg transition duration-200 ease-in-out group-data-[checked]:translate-x-5"
+        className="bg-foreground/30 group-data-[checked]:bg-foreground pointer-events-none inline-block size-5 translate-x-0 rounded-full shadow-lg ring-0 transition duration-200 ease-in-out group-data-[checked]:translate-x-5"
       />
     </Switch>
   );
