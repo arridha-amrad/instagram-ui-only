@@ -8,10 +8,8 @@ type Props = {
 export default function Layout({ children, stories }: Props) {
   return (
     <>
-      <div className="flex-1 px-4">
-        <div className="flex h-[100px] items-center justify-start">
-          {stories}
-        </div>
+      <div className="mx-auto w-full max-w-[630px] flex-1 space-y-6 px-4">
+        {stories}
         {children}
       </div>
       <div className="hidden basis-[300px] xl:block">

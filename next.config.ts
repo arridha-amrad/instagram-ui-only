@@ -7,6 +7,12 @@ const nextConfig: NextConfig = {
         hostname: "www.instagram.com",
       },
       {
+        hostname: "images.pexels.com",
+      },
+      {
+        hostname: "localhost",
+      },
+      {
         hostname: "static.cdninstagram.com",
       },
       {

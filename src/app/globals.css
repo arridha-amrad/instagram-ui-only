@@ -45,3 +45,7 @@ body {
   background: var(--background);
   font-family: var(--font-geist-sans);
 }
+
+button {
+  cursor: pointer;
+}
